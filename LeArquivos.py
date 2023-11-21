@@ -52,6 +52,22 @@ if not dados_combinados.empty:
     knn_accuracy = accuracy_score(y_test, knn_predictions)
     print(f"Acurácia do KNN: {knn_accuracy:.2f}")
 
-    # Resto do código...
+  # 2. Naive Bayes
+    naive_bayes_classifier = GaussianNB()
+    naive_bayes_classifier.fit(X_train, y_train)
+    naive_bayes_predictions = naive_bayes_classifier.predict(X_test)
+
+    # Avalie a precisão do modelo Naive Bayes
+    naive_bayes_accuracy = accuracy_score(y_test, naive_bayes_predictions)
+    print(f"Acurácia do Naive Bayes: {naive_bayes_accuracy:.2f}")
+
+    # 3. Multilayer Perceptron (MLP)
+    mlp_classifier = MLPClassifier(hidden_layer_sizes=(100,), max_iter=500)
+    mlp_classifier.fit(X_train, y_train)
+    mlp_predictions = mlp_classifier.predict(X_test)
+
+    # Avalie a precisão do modelo MLP
+    mlp_accuracy = accuracy_score(y_test, mlp_predictions)
+    print(f"Acurácia do MLP: {mlp_accuracy:.2f}")
 else:
     print("Atenção: Nenhum dado foi carregado. Verifique se os arquivos CSV estão corretamente especificados.")
